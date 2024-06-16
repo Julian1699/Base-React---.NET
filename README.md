@@ -62,18 +62,19 @@ La capa de persistencia y gestión de datos se realiza a través de Entity Frame
     ```
 
 ### 2. Instalar dependencias del frontend:
+
     ```bash
-    cd frontend-react
+        cd frontend-react
     ```
 
     ```bash
-    npm install
+        npm install
     ```
 
 ### 3. Ejecutar el frontend:
 
     ```bash
-    npm start
+        npm start
     ```
 
 ### 4. Configurar Conexión a tu Base de Datos
