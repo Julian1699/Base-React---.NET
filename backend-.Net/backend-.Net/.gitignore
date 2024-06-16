@@ -1,0 +1,39 @@
+# Ignorar los archivos y carpetas de Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.opendb
+*.jfm
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Ignorar los archivos de compilación
+bin/
+obj/
+Debug/
+Release/
+
+# Ignorar los paquetes de NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Ignorar los logs
+*.log
+*.tlog
+
+# Ignorar otros archivos temporales
+*.tmp
+*.temp
+*.cache
+*.diff
+*.patch
+
+# Ignorar archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
