@@ -54,7 +54,7 @@ Permite a los usuarios buscar objetos en la base de datos utilizando varios filt
 1. Clonar el repositorio:
 
     ```bash
-    git clone https://github.com/Julian1699/Base-React-SpringBoot.git
+    git clone https://github.com/Julian1699/Base-React-.NET.git
     ```
 
 2. Instalar las dependencias:
