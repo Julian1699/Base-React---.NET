@@ -1,5 +1,9 @@
-using backend_.Net.Context;
+using backend_.Net.Infrastructure.Context;
+using backend_.Net.Infrastructure.Repositories;
+using backend_.Net.Application.Interfaces;
+using backend_.Net.Application.Services;
 using Microsoft.EntityFrameworkCore;
+using backend_.Net.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +29,11 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Registrar repositorios y servicios
+builder.Services.AddScoped<IObjetoRepository, ObjetoRepository>();
+builder.Services.AddScoped<IObjetoService, ObjetoService>();
+
+// Configurar Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

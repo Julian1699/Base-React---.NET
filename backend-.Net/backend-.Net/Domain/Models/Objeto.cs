@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace backend_.Net.Models
+namespace backend_.Net.Domain.Models
 {
     [Table("objeto")]
     public class Objeto

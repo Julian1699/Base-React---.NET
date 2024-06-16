@@ -1,7 +1,7 @@
-﻿using backend_.Net.Models;
+﻿using backend_.Net.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend_.Net.Context
+namespace backend_.Net.Infrastructure.Context
 {
     public class AppDbContext : DbContext
     {
@@ -9,7 +9,7 @@ namespace backend_.Net.Context
         {
         }
 
-        public DbSet<Objeto> objeto { get; set; }
+        public DbSet<Objeto> Objeto { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

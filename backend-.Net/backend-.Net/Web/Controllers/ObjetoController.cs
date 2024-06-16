@@ -1,48 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using backend_.Net.Application.Interfaces;
+using backend_.Net.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using backend_.Net.Context;
-using backend_.Net.Models;
 
-namespace backend_.Net.Controllers
+namespace backend_.Net.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ObjetoController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IObjetoService _objetoService;
 
-        public ObjetoController(AppDbContext context)
+        public ObjetoController(IObjetoService objetoService)
         {
-            _context = context;
+            _objetoService = objetoService;
         }
 
-        // GET: api/Objeto
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Objeto>>> GetObjetos()
         {
-            return await _context.objeto.ToListAsync();
+            var objetos = await _objetoService.GetAll();
+            return Ok(objetos);
         }
 
-        // GET: api/Objeto/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Objeto>> GetObjeto(long id)
         {
-            var objeto = await _context.objeto.FindAsync(id);
-
+            var objeto = await _objetoService.GetById(id);
             if (objeto == null)
             {
                 return NotFound(new { message = "Objeto no encontrado" });
             }
-
-            return objeto;
+            return Ok(objeto);
         }
 
-        // PUT: api/Objeto/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutObjeto(long id, Objeto objeto)
         {
@@ -51,15 +45,13 @@ namespace backend_.Net.Controllers
                 return BadRequest(new { message = "ID del objeto no coincide" });
             }
 
-            _context.Entry(objeto).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await _objetoService.Update(objeto);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ObjetoExists(id))
+                if (await _objetoService.GetById(id) == null)
                 {
                     return NotFound(new { message = "Objeto no encontrado" });
                 }
@@ -72,33 +64,26 @@ namespace backend_.Net.Controllers
             return Ok(new { message = "Objeto actualizado con éxito" });
         }
 
-        // POST: api/Objeto
         [HttpPost]
         public async Task<ActionResult<Objeto>> PostObjeto(Objeto objeto)
         {
-            _context.objeto.Add(objeto);
-            await _context.SaveChangesAsync();
-
+            await _objetoService.Add(objeto);
             return CreatedAtAction("GetObjeto", new { id = objeto.id }, new { message = "Objeto creado con éxito", objeto });
         }
 
-        // DELETE: api/Objeto/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteObjeto(long id)
         {
-            var objeto = await _context.objeto.FindAsync(id);
+            var objeto = await _objetoService.GetById(id);
             if (objeto == null)
             {
                 return NotFound(new { message = "Objeto no encontrado" });
             }
 
-            _context.objeto.Remove(objeto);
-            await _context.SaveChangesAsync();
-
+            await _objetoService.Delete(id);
             return Ok(new { message = "Objeto eliminado con éxito" });
         }
 
-        // GET: api/Objeto/buscar
         [HttpGet("buscar")]
         public async Task<ActionResult<IEnumerable<Objeto>>> BuscarObjetos(
             [FromQuery] string? nombre,
@@ -106,40 +91,13 @@ namespace backend_.Net.Controllers
             [FromQuery] double? precio,
             [FromQuery] DateTime? fechaCreacion)
         {
-            var query = _context.objeto.AsQueryable();
-
-            if (!string.IsNullOrEmpty(nombre))
-            {
-                query = query.Where(o => o.nombre.Contains(nombre));
-            }
-
-            if (!string.IsNullOrEmpty(descripcion))
-            {
-                query = query.Where(o => o.descripcion.Contains(descripcion));
-            }
-
-            if (precio.HasValue)
-            {
-                query = query.Where(o => o.precio == precio.Value);
-            }
-
-            if (fechaCreacion.HasValue)
-            {
-                query = query.Where(o => o.fecha_creacion.Date == fechaCreacion.Value.Date);
-            }
-
-            var resultados = await query.ToListAsync();
-            if (resultados.Count == 0)
+            var resultados = await _objetoService.Search(nombre, descripcion, precio, fechaCreacion);
+            if (resultados == null || !resultados.Any())
             {
                 return NotFound(new { message = "No se encontraron objetos que coincidan con los criterios de búsqueda" });
             }
 
             return Ok(resultados);
-        }
-
-        private bool ObjetoExists(long id)
-        {
-            return _context.objeto.Any(e => e.id == id);
         }
     }
 }
