@@ -58,7 +58,7 @@ La capa de persistencia y gestión de datos se realiza a través de Entity Frame
 
 ### 1. Clonar el repositorio:
     ```bash
-    git clone https://github.com/Julian1699/Base-React-SpringBoot.git
+    git clone https://github.com/Julian1699/Base-React-.NET.git
     ```
 
 ### 2. Instalar dependencias del frontend:
