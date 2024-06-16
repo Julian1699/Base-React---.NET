@@ -3,7 +3,7 @@
 
 ## Aplicación de Gestión de Objetos con React JS, .NET y PostgreSQL
 
-![App React+ Net](https://github.com/Julian1699/Base-React-.NET/assets/114323630/0cb18341-f76b-47a5-9130-5456acaa5ba0)
+![App React+ Net](https://github.com/Julian1699/Base-React-.NET/assets/114323630/2c4f121e-3723-4100-a01d-441765922e9d)
 
 ¡Bienvenido al repositorio del proyecto de la Aplicación de Gestión de Objetos! En esta versión, hemos empleado PostgreSQL para una mayor escalabilidad y rendimiento. La aplicación utiliza tecnologías modernas como React y .NET.
 
