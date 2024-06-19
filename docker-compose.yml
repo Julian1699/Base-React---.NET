@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  # App (React - Frontend)
+  react:
+    container_name: react
+    build:
+      context: ./frontend-react
+    ports:
+      - 3000:80
+    depends_on:
+      - backend
+
+  # App (Backend - .NET)
+  backend:
+    container_name: backend
+    build:
+      context: ./backend-.Net/backend-.Net
+      dockerfile: Dockerfile  # Asegúrate de que esta línea esté correcta
+    ports:
+      - 5001:80
+    environment:
+      - ConnectionStrings__Connection=Host=db-postgres;Port=5432;Database=tryapi;Username=postgres;Password=postgres
+    depends_on:
+      - postgres_db
+
+  # App (Postgres - Data Base)
+  postgres_db:
+    container_name: db-postgres
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tryapi

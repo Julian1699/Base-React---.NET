@@ -1,0 +1,4 @@
+# Excluir carpetas de compilación y configuración del entorno de desarrollo
+bin
+obj
+.vs

@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\julia\\Desktop\\react-.net\\backend-.Net\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25591BF8-CBFA-4E7F-B75E-0E888D61D722}|backend-.Net\\backend-.Net.csproj|c:\\users\\julia\\desktop\\react-.net\\backend-.net\\backend-.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25591BF8-CBFA-4E7F-B75E-0E888D61D722}|backend-.Net\\backend-.Net.csproj|solutionrelative:backend-.net\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\julia\\Desktop\\react-.net\\backend-.Net\\backend-.Net\\Program.cs",
+              "RelativeDocumentMoniker": "backend-.Net\\Program.cs",
+              "ToolTip": "C:\\Users\\julia\\Desktop\\react-.net\\backend-.Net\\backend-.Net\\Program.cs",
+              "RelativeToolTip": "backend-.Net\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T15:44:01.907Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
